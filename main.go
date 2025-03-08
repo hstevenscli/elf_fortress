@@ -2,13 +2,19 @@ package main
 
 import (
 	"fmt"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	fmt.Println("hello000w world")
-	fmt.Println("hellrld")
 
+	router := gin.Default()
+
+	// Initialize a player object
 	p := Player{ Name: "Elfo", Health: 100 }
+
+
+
+	// INITIALIZE various zone objects
 	// starterZone := Zone{
 	// 	Name: "Starter Zone",
 	// 	Zone: [][]Tile{ // Outer slice for rows
@@ -33,4 +39,17 @@ func main() {
 	// fmt.Println(starterZone.Zone[0][0].CurrentPlayers[0])
 
 
+
+
+	////////// SERVER ROUTES HERE /////////////
+	// Handlers will be in handlers.go
+
+	// Can be like this with a function passed directly as the second parameter
+	router.GET("/ping", func(c *gin.Context) {
+		c.JSON(200, gin.H{"status": "pong"})
+	})
+
+	// Or just the name of a function
+	router.GET("/test", testHandler)
+	router.Run()
 }

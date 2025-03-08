@@ -11,35 +11,16 @@ func main() {
 
 	// Initialize a player object
 	p := Player{ Name: "Elfo", Health: 100 }
-
-
-
-	// INITIALIZE various zone objects
-	// starterZone := Zone{
-	// 	Name: "Starter Zone",
-	// 	Zone: [][]Tile{ // Outer slice for rows
-	// 		{ // First row
-	// 			{GroundType: 0, Other: 1, CurrentPlayers: []*Player{ &p }},
-	// 		},
-	// 	},
-	// }
-
-	var sz SimpleZone = SimpleZone{ Name: "Hal", Land: [][]int{
-		{
-			0, 0, 1, 2,
-		},
-		{
-			5, 5, 5, 25,
-		},
-	}}
-
 	fmt.Println(p)
-	fmt.Println(sz)
-	// fmt.Println(starterZone)
-	// fmt.Println(starterZone.Zone[0][0].CurrentPlayers[0])
+
+	w, h := 10, 10
 
 
+	level1 := initZone(w, h)
 
+	appendPlayerToZone(5, 8, &p, &level1)
+	printZone(&level1)
+	printZoneAll(&level1)
 
 	////////// SERVER ROUTES HERE /////////////
 	// Handlers will be in handlers.go
